@@ -1,0 +1,7 @@
+.thumb-image {
+  height: 300px;
+  width: auto;
+  transform: rotate(10deg);
+  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.3);
+}
+

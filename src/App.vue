@@ -3,8 +3,11 @@
 </template>
 
 <style src="bulma/css/bulma.css"></style>
+<style src="basscss/css/basscss.css"></style>
+<style src="./assets/css/main.css"></style>
 <script>
 export default {
-  name: 'App'
+  name: 'App',
 }
+
 </script>
