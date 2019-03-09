@@ -67,7 +67,7 @@
     </div>
     <div class="container">
       <div class="section">
-        <div class="columns">
+        <div class="columns is-multiline">
           <div class="column is-4" v-for="movie in movies" :key="movie.imdbID">
             <MovieThumb :movie="movie"/>
           </div>
