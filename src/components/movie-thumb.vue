@@ -1,5 +1,5 @@
 <template>
-  <div class="card">
+  <div class="card mb3">
     <div class="card-image has-text-centered">
       <img
         class="thumb-image"

@@ -8,67 +8,65 @@
       </div>
     </section>
     <div class="hero is-light">
-    
-    <div class="container">
-      <div class="section">
-        <div class="columns">
-          <div class="column is-2">
-            <div class="field">
-              <label>Filter by title</label>
-              <input class="input" type="text" />
-            </div>
-          </div>
-          <div class="column is-2">
-            <div class="field">
-              <label>Filter by Year</label>
-              <input class="input" type="text" />
-            </div>
-          </div>
-          <div class="column is-2">
-            <div class="field">
-              <label>Filter by Genre</label>
-              <br>
-              <div class="select is-fullwidth">
-                <select>
-                  <option>option-1</option>
-                  <option>option-1</option>
-                </select>
+      <div class="container">
+        <div class="section">
+          <div class="columns">
+            <div class="column is-2">
+              <div class="field">
+                <label>Filter by title</label>
+                <input class="input" type="text">
               </div>
             </div>
-          </div>
-          <div class="column is-2">
-            <div class="field">
-              <label>Filter by director</label>
-              <br>
-              <div class="select is-fullwidth">
-                <select>
-                  <option>option-1</option>
-                  <option>option-1</option>
-                </select>
+            <div class="column is-2">
+              <div class="field">
+                <label>Filter by Year</label>
+                <input class="input" type="text">
               </div>
             </div>
-          </div>
-          <div class="column is-2">
-            <div class="field">
-              <label>Filter by Language</label>
-              <br>
-              <div class="select is-fullwidth">
-                <select>
-                  <option>option-1</option>
-                  <option>option-1</option>
-                </select>
+            <div class="column is-2">
+              <div class="field">
+                <label>Filter by Genre</label>
+                <br>
+                <div class="select is-fullwidth">
+                  <select>
+                    <option>option-1</option>
+                    <option>option-1</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+            <div class="column is-2">
+              <div class="field">
+                <label>Filter by director</label>
+                <br>
+                <div class="select is-fullwidth">
+                  <select>
+                    <option>option-1</option>
+                    <option>option-1</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+            <div class="column is-2">
+              <div class="field">
+                <label>Filter by Language</label>
+                <br>
+                <div class="select is-fullwidth">
+                  <select>
+                    <option>option-1</option>
+                    <option>option-1</option>
+                  </select>
+                </div>
               </div>
             </div>
           </div>
         </div>
       </div>
     </div>
-    
-    </div>
     <div class="container">
       <div class="section">
-        <div class="columns is-multiline">
-          <div class="column is-4" v-for="movie in movies" :key="movie.imdbID">
+        <div class="bricklayer">
+          <div v-for="movie in movies" :key="movie.imdbID">
             <MovieThumb :movie="movie"/>
           </div>
         </div>
@@ -77,9 +75,12 @@
   </div>
 </template>
 
+<style src="../assets/libs/bricklayer/bricklayer.css"></style>
+
 <script>
 import movies from "../data/movies.json";
 import MovieThumb from "../components/movie-thumb.vue";
+
 export default {
   name: "Home",
   components: {
@@ -90,6 +91,11 @@ export default {
       greeting: "Hello",
       movies: movies
     };
+  },
+  mounted: function() {
+    this.$nextTick(function() {
+      new window.Bricklayer(document.querySelector(".bricklayer"));
+    });
   }
 };
 </script>
