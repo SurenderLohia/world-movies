@@ -92,10 +92,17 @@ export default {
       movies: movies
     };
   },
+  beforeCreate: function() {
+    if(!this.$parent.isAuthenticated) {
+      this.$router.push({ path: '/' });
+    }
+  },
   mounted: function() {
     this.$nextTick(function() {
-      new window.Bricklayer(document.querySelector(".bricklayer"));
-    });
+        if(this.$parent.isAuthenticated && this.movies.length) {
+          new window.Bricklayer(document.querySelector(".bricklayer"));
+        }
+      });
   }
 };
 </script>

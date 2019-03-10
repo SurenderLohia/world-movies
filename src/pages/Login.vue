@@ -10,12 +10,12 @@
             <form class="card-content" @submit="onSubmit" novalidate="true">
               <div class="field">
                 <label>Username</label>
-                <input class="input" type="text" autofocus v-model="username">
+                <input class="input" type="text" autofocus v-model="username" autocomplete>
                 <div class="has-text-danger h5" v-if="error.username">{{ error.username }}</div>
               </div>
               <div class="field">
                 <label>Password</label>
-                <input class="input" type="password" v-model="password">
+                <input class="input" type="password" v-model="password" autocomplete>
                 <div class="has-text-danger h5" v-if="error.password">{{ error.password }}</div>
                 <div class="has-text-danger h5" v-if="error.genericError">{{ error.genericError }}</div>
               </div>
@@ -41,6 +41,11 @@ export default {
       error: {}
     };
   },
+  beforeCreate: function() {
+    if(this.$parent.isAuthenticated) {
+      this.$router.push({ path: '/home' });
+    }
+  },
   methods: {
     onSubmit(e) {
       this.error = {};
@@ -53,9 +58,10 @@ export default {
 
       if (this.username && this.password) {
         if (this.username === USER.NAME && this.password === USER.PASSWORD) {
+          this.$parent.isAuthenticated = true;
           this.$router.push({ path: 'home' });
         } else {
-          this.error.genericError = "Username or Password is not valid";
+          this.error.genericError = "Username or Password is invalid";
         }
       }
 
