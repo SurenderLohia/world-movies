@@ -25,24 +25,18 @@
             </div>
             <div class="column is-2">
               <div class="field">
-                <label>Filter by Genre</label>
-                <br>
-                <div class="select is-fullwidth">
-                  <select>
-                    <option>option-1</option>
-                    <option>option-1</option>
-                  </select>
-                </div>
+                <label>Filter by director</label>
+                <input class="input" type="text" v-model="filters.Director">
               </div>
             </div>
             <div class="column is-2">
               <div class="field">
-                <label>Filter by director</label>
+                <label>Filter by Genre</label>
                 <br>
                 <div class="select is-fullwidth">
-                  <select>
-                    <option>option-1</option>
-                    <option>option-1</option>
+                  <select v-model="filters.Genre">
+                    <option disabled value="">Select one</option>
+                    <option v-for="(genre, i) in GENRES" :key="i" :value="genre.id">{{genre.name}}</option>
                   </select>
                 </div>
               </div>
@@ -52,9 +46,9 @@
                 <label>Filter by Language</label>
                 <br>
                 <div class="select is-fullwidth">
-                  <select>
-                    <option>option-1</option>
-                    <option>option-1</option>
+                  <select v-model="filters.Language">
+                    <option disabled value="">Select one</option>
+                    <option v-for="(language, i) in LANGUAGES" :key="i" :value="language.id">{{language.name}}</option>
                   </select>
                 </div>
               </div>
@@ -86,6 +80,7 @@
 <script>
 import movies from "../data/movies.json";
 import MovieThumb from "../components/movie-thumb.vue";
+import { GENRES, LANGUAGES, CONTAIN_SEARCH } from '../constants';
 
 export default {
   name: "Home",
@@ -96,6 +91,8 @@ export default {
     return {
       movies: movies,
       filteredMoives: movies.slice(),
+      GENRES: GENRES,
+      LANGUAGES: LANGUAGES,
       filters: {
         Title: '',
         Year: '',
@@ -139,7 +136,13 @@ export default {
       if(Object.keys(validFilters).length) {
         newFilteredMovies = this.movies.filter(item => {
           for(let key in validFilters) {
-            if((!item[key] || item[key].toLowerCase() != validFilters[key].toLowerCase())) {
+            let isContainSearch = CONTAIN_SEARCH.includes(key);
+
+            if(isContainSearch) {
+              if(!item[key] || !item[key].toLowerCase().includes(validFilters[key].toLowerCase())) {
+                return false;
+              }
+            } else if((!item[key] || item[key].toLowerCase() != validFilters[key].toLowerCase())) {
               return false;
             }
           }
