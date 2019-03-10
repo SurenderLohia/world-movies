@@ -9,7 +9,7 @@
     </section>
     <div class="hero is-light">
       <div class="container">
-        <div class="section">
+        <div class="section relative">
           <form class="columns" @submit="onFilter">
             <div class="column is-2">
               <div class="field">
@@ -55,17 +55,24 @@
             </div>
             <div class="column is-2">
               <label>&nbsp;</label>
-              <div class="field">
+              <div class="field table remove-bg">
                 <button class="button is-primary" type="submit">Filter</button>
+                &nbsp;<a class="has-text-grey underline table-cell align-bottom" v-on:click="clearFilter" v-if="isFilterApplied">X Clear filter</a> 
               </div>
             </div>
           </form>
+          <div class="absolute has-text-info" v-if="isFilterApplied && filteredMoives.length">
+             Filter result: {{filteredMoives.length}} movie(s) found...
+            </div>
         </div>
       </div>
     </div>
     <div class="container">
       <div class="section">
         <div class="bricklayer columns">
+          <p v-if="!filteredMoives.length">
+            No movies found...
+          </p>
           <div class="column is-4" v-for="(movie, i) in filteredMoives" :key="i">
             <MovieThumb :movie="movie"/>
           </div>
@@ -93,6 +100,7 @@ export default {
       filteredMoives: movies.slice(),
       GENRES: GENRES,
       LANGUAGES: LANGUAGES,
+      isFilterApplied: false,
       filters: {
         Title: '',
         Year: '',
@@ -149,13 +157,28 @@ export default {
           return true;
         });
 
+        this.isFilterApplied = true;
+
         this.filteredMoives.splice(0, this.filteredMoives.length, ...newFilteredMovies);
         //this.bricklayerInit();
       } else {
+        this.isFilterApplied = false;
         this.filteredMoives.splice(0, this.filteredMoives.length, ...this.movies);
         //this.bricklayerInit();
       }
 
+      e.preventDefault();
+    },
+    clearFilter(e) {
+      this.filters = {
+        Title: '',
+        Year: '',
+        Genre: '',
+        Director: '',
+        Language: ''
+      }
+      this.isFilterApplied = false;
+      this.filteredMoives.splice(0, this.filteredMoives.length, ...this.movies);
       e.preventDefault();
     }
   }
