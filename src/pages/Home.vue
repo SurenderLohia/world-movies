@@ -119,11 +119,6 @@ export default {
       });
   },
   methods: {
-    filterBy(list, key, value) {
-        return list.filter((item) => {
-          return item[key].toLowerCase() === value.toLowerCase();
-        });
-    },
     bricklayerInit() {
       if(this.bricklayer) {
         this.bricklayer.destroy();
@@ -131,17 +126,20 @@ export default {
       this.bricklayer = new window.Bricklayer(document.querySelector(".bricklayer"));
     },
     onFilter(e) {
-      var self = this;
-      let validFilters = Object.keys(this.filters).filter((key) => {
-        return Boolean(this.filters[key]);
-      });
+      let validFilters = {};
+
+      for(let key in this.filters) {
+        if(this.filters[key]) {
+          validFilters[key] = this.filters[key];
+        }
+      }
 
       let newFilteredMovies = [];
 
-      if(validFilters.length) {
+      if(Object.keys(validFilters).length) {
         newFilteredMovies = this.movies.filter(item => {
-          for(let key in self.filters) {
-            if(self.filters[key] && (!item[key] || item[key] != self.filters[key])) {
+          for(let key in validFilters) {
+            if((!item[key] || item[key].toLowerCase() != validFilters[key].toLowerCase())) {
               return false;
             }
           }
