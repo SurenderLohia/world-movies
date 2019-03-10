@@ -10,17 +10,17 @@
     <div class="hero is-light">
       <div class="container">
         <div class="section">
-          <div class="columns">
+          <form class="columns" @submit="onFilter">
             <div class="column is-2">
               <div class="field">
                 <label>Filter by title</label>
-                <input class="input" type="text">
+                <input class="input" type="text" v-model="filters.Title">
               </div>
             </div>
             <div class="column is-2">
               <div class="field">
                 <label>Filter by Year</label>
-                <input class="input" type="text">
+                <input class="input" type="text" v-model="filters.Year">
               </div>
             </div>
             <div class="column is-2">
@@ -59,14 +59,20 @@
                 </div>
               </div>
             </div>
-          </div>
+            <div class="column is-2">
+              <label>&nbsp;</label>
+              <div class="field">
+                <button class="button is-primary" type="submit">Filter</button>
+              </div>
+            </div>
+          </form>
         </div>
       </div>
     </div>
     <div class="container">
       <div class="section">
-        <div class="bricklayer">
-          <div v-for="movie in movies" :key="movie.imdbID">
+        <div class="bricklayer columns">
+          <div class="column is-4" v-for="(movie, i) in filteredMoives" :key="i">
             <MovieThumb :movie="movie"/>
           </div>
         </div>
@@ -88,8 +94,16 @@ export default {
   },
   data() {
     return {
-      greeting: "Hello",
-      movies: movies
+      movies: movies,
+      filteredMoives: movies.slice(),
+      filters: {
+        Title: '',
+        Year: '',
+        Genre: '',
+        Director: '',
+        Language: ''
+      },
+      bricklayer: null
     };
   },
   beforeCreate: function() {
@@ -100,9 +114,49 @@ export default {
   mounted: function() {
     this.$nextTick(function() {
         if(this.$parent.isAuthenticated && this.movies.length) {
-          new window.Bricklayer(document.querySelector(".bricklayer"));
+          //this.bricklayer = new window.Bricklayer(document.querySelector(".bricklayer"));
         }
       });
+  },
+  methods: {
+    filterBy(list, key, value) {
+        return list.filter((item) => {
+          return item[key].toLowerCase() === value.toLowerCase();
+        });
+    },
+    bricklayerInit() {
+      if(this.bricklayer) {
+        this.bricklayer.destroy();
+      }
+      this.bricklayer = new window.Bricklayer(document.querySelector(".bricklayer"));
+    },
+    onFilter(e) {
+      var self = this;
+      let validFilters = Object.keys(this.filters).filter((key) => {
+        return Boolean(this.filters[key]);
+      });
+
+      let newFilteredMovies = [];
+
+      if(validFilters.length) {
+        newFilteredMovies = this.movies.filter(item => {
+          for(let key in self.filters) {
+            if(self.filters[key] && (!item[key] || item[key] != self.filters[key])) {
+              return false;
+            }
+          }
+          return true;
+        });
+
+        this.filteredMoives.splice(0, this.filteredMoives.length, ...newFilteredMovies);
+        //this.bricklayerInit();
+      } else {
+        this.filteredMoives.splice(0, this.filteredMoives.length, ...this.movies);
+        //this.bricklayerInit();
+      }
+
+      e.preventDefault();
+    }
   }
 };
 </script>
