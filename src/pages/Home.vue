@@ -14,19 +14,19 @@
             <div class="column is-2">
               <div class="field">
                 <label>Filter by title</label>
-                <input class="input" type="text" v-model="filters.Title">
+                <input name="filter-by-title" class="input" type="text" v-model="filters.Title">
               </div>
             </div>
             <div class="column is-2">
               <div class="field">
                 <label>Filter by Year</label>
-                <input class="input" type="text" v-model="filters.Year">
+                <input name="filter-by-year" class="input" type="text" v-model="filters.Year">
               </div>
             </div>
             <div class="column is-2">
               <div class="field">
                 <label>Filter by director</label>
-                <input class="input" type="text" v-model="filters.Director">
+                <input name="filter-by-director" class="input" type="text" v-model="filters.Director">
               </div>
             </div>
             <div class="column is-2">
@@ -34,7 +34,7 @@
                 <label>Filter by Genre</label>
                 <br>
                 <div class="select is-fullwidth">
-                  <select v-model="filters.Genre">
+                  <select name="filter-by-genre" v-model="filters.Genre">
                     <option disabled value="">Select one</option>
                     <option v-for="(genre, i) in GENRES" :key="i" :value="genre.id">{{genre.name}}</option>
                   </select>
@@ -46,7 +46,7 @@
                 <label>Filter by Language</label>
                 <br>
                 <div class="select is-fullwidth">
-                  <select v-model="filters.Language">
+                  <select name="filter-by-language" v-model="filters.Language">
                     <option disabled value="">Select one</option>
                     <option v-for="(language, i) in LANGUAGES" :key="i" :value="language.id">{{language.name}}</option>
                   </select>
@@ -56,8 +56,8 @@
             <div class="column is-2">
               <label>&nbsp;</label>
               <div class="field table remove-bg">
-                <button class="button is-primary" type="submit">Filter</button>
-                &nbsp;<a class="has-text-grey underline table-cell align-bottom" v-on:click="clearFilter" v-if="isFilterApplied">X Clear filter</a> 
+                <button name="filter" class="button is-primary" type="submit">Filter</button>
+                &nbsp;<a class="has-text-grey underline table-cell align-bottom" v-on:click="clearFilter" v-if="isFilterApplied" data-cy="clear-filter">X Clear filter</a> 
               </div>
             </div>
           </form>
