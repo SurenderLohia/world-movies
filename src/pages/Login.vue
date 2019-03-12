@@ -10,12 +10,12 @@
             <form class="card-content" @submit="onSubmit" novalidate="true">
               <div class="field">
                 <label>Username</label>
-                <input class="input" type="text" autofocus v-model="username" autocomplete>
+                <input name="username" class="input" type="text" autofocus v-model="username" autocomplete>
                 <div class="has-text-danger h5" v-if="error.username">{{ error.username }}</div>
               </div>
               <div class="field">
                 <label>Password</label>
-                <input class="input" type="password" v-model="password" autocomplete>
+                <input name="password" class="input" type="password" v-model="password" autocomplete>
                 <div class="has-text-danger h5" v-if="error.password">{{ error.password }}</div>
                 <div class="has-text-danger h5" v-if="error.genericError">{{ error.genericError }}</div>
               </div>
