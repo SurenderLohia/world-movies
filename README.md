@@ -1,5 +1,14 @@
 # world-movies
 
+## Fork it, then Clone (from your forked repo)
+
+Clone the world-movies repository
+
+Navigate to that directory
+```
+cd world-movies
+```
+
 ## Project setup
 ```
 npm install
@@ -15,15 +24,22 @@ npm run serve
 npm run build
 ```
 
-### Run your tests
-```
-npm run test
-```
-
 ### Lints and fixes files
 ```
 npm run lint
 ```
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+### Install cypress
+```
+npm install --save-dev cypress
+```
+
+##### Add below line in scripts section of `package.json ` file
+```
+"cypress:open": "cypress open"
+```
+
+### Run cypress test
+```
+npm run cypress:open
+```
