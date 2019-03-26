@@ -39,7 +39,12 @@ npm install --save-dev cypress
 "cypress:open": "cypress open"
 ```
 
-### Run cypress test
+### Run cypress test with normal browser
 ```
 npm run cypress:open
+```
+
+### Run cypress test with normal headless browser
+```
+npm run cypress:run
 ```

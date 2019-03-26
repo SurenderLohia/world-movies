@@ -8,6 +8,7 @@ describe('Home page', function() {
   context('Filter Flow', function() {
     it('filter by title', function() {
       const TITLE = 'A Touch of Sin'
+      //cy.screenshot()
       cy.get('[name="filter-by-title"]').type(`${TITLE}{enter}`)
       cy.get('.card').its('length').should('eq', 1)
       cy.contains(TITLE)
