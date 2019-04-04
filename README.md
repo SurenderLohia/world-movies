@@ -29,14 +29,17 @@ npm run build
 npm run lint
 ```
 
-### Install cypress
+### Install [Cypress](https://www.cypress.io/)
 ```
 npm install --save-dev cypress
 ```
 
-##### Add below line in scripts section of `package.json ` file
+##### Add below lines in scripts section of `package.json` file
 ```
 "cypress:open": "cypress open"
+```
+```
+"cypress:run": "cypress run"
 ```
 
 ### Run cypress test with normal browser
@@ -44,7 +47,9 @@ npm install --save-dev cypress
 npm run cypress:open
 ```
 
-### Run cypress test with normal headless browser
+### Run cypress test with headless browser
 ```
 npm run cypress:run
 ```
+
+[Cypress Api](https://docs.cypress.io/api/api/table-of-contents.html)
