@@ -10,7 +10,7 @@ export default {
   name: 'App',
   data() {
     return {
-      isAuthenticated: false
+      isAuthenticated: window.sessionStorage.getItem('isLoggedIn')
     }
   }
 }

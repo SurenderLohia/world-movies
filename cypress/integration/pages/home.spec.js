@@ -1,6 +1,11 @@
 describe('Home page', function() {
   beforeEach(function() {
-    cy.visit('/')
+    cy.visit('/', {
+      onBeforeLoad: (win) => {
+        // clear session storage
+        win.sessionStorage.clear()
+      }
+    })
     cy.get('[name="username"]').type('admin')
     cy.get('[name="password"]').type(`admin_123{enter}`)
   })

@@ -59,6 +59,7 @@ export default {
       if (this.username && this.password) {
         if (this.username === USER.NAME && this.password === USER.PASSWORD) {
           this.$parent.isAuthenticated = true;
+          window.sessionStorage.setItem('isLoggedIn', true);
           this.$router.push({ path: 'home' });
         } else {
           this.error.genericError = "Username or Password is invalid";
