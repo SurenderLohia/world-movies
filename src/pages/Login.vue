@@ -11,16 +11,16 @@
               <div class="field">
                 <label>Username</label>
                 <input name="username" class="input" type="text" autofocus v-model="username" autocomplete>
-                <div class="has-text-danger h5" v-if="error.username">{{ error.username }}</div>
+                <div class="has-text-danger h5" v-if="error.username" data-cy="username-error">{{ error.username }}</div>
               </div>
               <div class="field">
                 <label>Password</label>
                 <input name="password" class="input" type="password" v-model="password" autocomplete>
-                <div class="has-text-danger h5" v-if="error.password">{{ error.password }}</div>
-                <div class="has-text-danger h5" v-if="error.genericError">{{ error.genericError }}</div>
+                <div class="has-text-danger h5" v-if="error.password" data-cy="password-error">{{ error.password }}</div>
+                <div class="has-text-danger h5" v-if="error.generic" data-cy="invalid-credentials-error">{{ error.generic }}</div>
               </div>
               <div class="field">
-                <button type="submit" class="button is-primary">Login</button>
+                <button type="submit" class="button is-primary" data-cy="submit">Login</button>
               </div>
             </form>
           </div>
@@ -50,10 +50,10 @@ export default {
     onSubmit(e) {
       this.error = {};
       if (!this.username) {
-        this.error.username = "Please enter the Username";
+        this.error.username = "Please enter the username";
       }
       if (!this.password) {
-        this.error.password = "Please enter the Password";
+        this.error.password = "Please enter the password";
       }
 
       if (this.username && this.password) {
@@ -62,7 +62,7 @@ export default {
           window.sessionStorage.setItem('isLoggedIn', true);
           this.$router.push({ path: 'home' });
         } else {
-          this.error.genericError = "Username or Password is invalid";
+          this.error.generic = "Username or password is invalid";
         }
       }
 
