@@ -10,3 +10,6 @@ Node Version Manager - Simple bash script to manage multiple active node.js vers
 
 https://github.com/creationix/nvm
 
+## Your Favorite Editor
+
+Recomended Editor: [Visual Studio Code](https://code.visualstudio.com/)
