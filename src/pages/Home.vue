@@ -79,6 +79,7 @@
         </div>
       </div>
     </div>
+    <Footer/>
   </div>
 </template>
 
@@ -87,12 +88,14 @@
 <script>
 import movies from "../data/movies.json";
 import MovieThumb from "../components/movie-thumb.vue";
+import Footer from "../components/footer.vue";
 import { GENRES, LANGUAGES, CONTAIN_SEARCH } from '../constants';
 
 export default {
   name: "Home",
   components: {
-    MovieThumb
+    MovieThumb,
+    Footer
   },
   data() {
     return {
