@@ -46,11 +46,5 @@ describe('Home page', function() {
       cy.get('.card').its('length').should('eq', 1)
       cy.contains(LANGUAGE)
     })
-
-    // Todo: need fix
-    // it('clear filter', function() {
-    //   cy.get('[data-test=clear-filter]').click()
-    //   cy.get('.card').its('length').should('eq', 1)
-    // })
   })
 })

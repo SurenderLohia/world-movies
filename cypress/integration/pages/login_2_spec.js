@@ -40,8 +40,4 @@ describe('Login page with error scenarios', function() {
       cy.contains('World Movies')
     })
   });
-
-  
-
-  
 })
