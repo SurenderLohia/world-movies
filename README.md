@@ -24,6 +24,14 @@ npm install
 npm run serve
 ```
 
+#### Login Credentials:
+username: `admin`
+
+password: `admin_123`
+
+#### For logout
+Goto browser session storage and delete `isLoggedIn` flag :)
+
 
 ### Workshop task breakdown
 - [ ] Install Cypress
