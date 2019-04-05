@@ -29,6 +29,11 @@ npm run build
 npm run lint
 ```
 
+### To start...
+```
+git checkout dev
+```
+
 ### Install [Cypress](https://www.cypress.io/)
 ```
 npm install --save-dev cypress
@@ -53,3 +58,16 @@ npm run cypress:run
 ```
 
 [Cypress Api](https://docs.cypress.io/api/api/table-of-contents.html)
+
+### Branch naming convention
+| Name | Description |
+| --- | --- |
+| dev | Basic working app |
+| dev-2 | Cypress setup |
+| dev-3 | Login page test cases |
+| dev-4 | Home page test cases |
+| dev-5 | Footer component test cases |
+| dev-6 | Login test cases with error scenarios |
+
+PS: Once checkout in `dev` branch no need to switch branches for linear flow... 
+
