@@ -10,6 +10,11 @@ cd world-movies
 ```
 
 ## Project setup
+
+```
+git checkout dev
+```
+
 ```
 npm install
 ```
@@ -19,20 +24,6 @@ npm install
 npm run serve
 ```
 
-### Compiles and minifies for production
-```
-npm run build
-```
-
-### Lints and fixes files
-```
-npm run lint
-```
-
-### To start...
-```
-git checkout dev
-```
 
 ### Workshop task breakdown
 - [ ] Install Cypress
@@ -79,4 +70,15 @@ npm run cypress:run
 | dev-6 | Login test cases with error scenarios |
 
 PS: Once checkout in `dev` branch no need to switch branches for linear flow... 
+
+
+### Compiles and minifies for production
+```
+npm run build
+```
+
+### Lints and fixes files
+```
+npm run lint
+```
 
