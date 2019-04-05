@@ -34,6 +34,15 @@ npm run lint
 git checkout dev
 ```
 
+### Workshop task breakdown
+- [ ] Install Cypress
+- [ ] Write Login page test cases
+- [ ] Write Home page test cases
+- [ ] Write Footer component test cases
+- [ ] Write Login test cases with error scenarios
+
+> In this small time span, if we covered 2 tasks, it's more than enough... Don't rush :)
+
 ### Install [Cypress](https://www.cypress.io/)
 ```
 npm install --save-dev cypress
