@@ -56,8 +56,8 @@
             <div class="column is-2">
               <label>&nbsp;</label>
               <div class="field table remove-bg">
-                <button name="filter" class="button is-primary" type="submit">Filter</button>
-                &nbsp;<a class="has-text-grey underline table-cell align-bottom" v-on:click="clearFilter" v-if="isFilterApplied" data-cy="clear-filter">X Clear filter</a> 
+                <button name="filter" class="button is-primary mr1" type="submit">Filter</button>
+                &nbsp;<a class="has-text-grey underline table-cell align-middle h5" v-on:click="clearFilter" v-if="isFilterApplied" data-cy="clear-filter">X Clear filter</a> 
               </div>
             </div>
           </form>
