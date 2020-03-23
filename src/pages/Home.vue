@@ -69,7 +69,7 @@
     </div>
     <div class="container">
       <div class="section">
-        <div class="bricklayer columns">
+        <div class="columns">
           <p v-if="!filteredMoives.length">
             No movies found...
           </p>
