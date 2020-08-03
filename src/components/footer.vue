@@ -8,6 +8,9 @@
           The source code is licensed <a href="https://surender.mit-license.org/" target="_blank" rel="noopener noreferrer">MIT</a>. The website content
           is licensed <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener noreferrer">CC BY NC SA 4.0</a>.
         </p>
+        <p>
+          <a class="stack-share" href="https://stackshare.io/SurenderLohia/world-movies"><img src="http://img.shields.io/badge/tech-stack-0690fa.svg?style=flat" alt="StackShare"></a>
+        </p>
       </div>
     </div>
     </footer>
